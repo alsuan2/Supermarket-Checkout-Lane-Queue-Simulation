@@ -166,6 +166,19 @@ def generation(maximum=0):
         if customer.item > 10 and regular_count2 > 5:
             remove_regular += 1
         time.sleep(2)  # a customer is generated every 2 seconds
+        if remove_regular > 0:
+            regular_count2 = 5
+            print(f"|| Regular Lane || #1 (Open) has {regular_count2} customers.")
+            print(f"|| Regular Lane || #2 (Open) has {remove_regular} customers.")
+            print(f"|| Regular Lane || #3 (Closed) has 0 customers.")
+            print(f"|| Regular Lane || #4 (Closed) has 0 customers.")
+            print(f"|| Regular Lane || #5 (Closed) has 0 customers.\n")
+        elif remove_regular < 1:
+            print(f"|| Regular Lane || #1 (Open) has {regular_count2} customers.")
+            print(f"|| Regular Lane || #2 (Closed) has 0 customers.")
+            print(f"|| Regular Lane || #3 (Closed) has 0 customers.")
+            print(f"|| Regular Lane || #4 (Closed) has 0 customers.")
+            print(f"|| Regular Lane || #5 (Closed) has 0 customers.\n")
     print(f"Number of customers moved: {remove_regular}")
     print("Customers in self service lane:", self_service_count2)
     print("Customers in regular lane:", regular_count2)
@@ -174,17 +187,5 @@ def generation(maximum=0):
         generation(simulation)
     return num_of_customers  # this return statement will return/output when the 'generation' function is run
 
-
 simulation = random.randint(0, 10)  # the simulation will generate random number of customers between 0 and 10
-
-
-class Result:
-    def output(self):
-        """ outputs the generation and lane_initial_choose_lane functions in the console
-        """
-        lane.initial_choose_lane()
-        generation(simulation)
-
-
-console = Result()
-console.output()
+generation(simulation)
